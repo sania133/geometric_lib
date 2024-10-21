@@ -1,4 +1,3 @@
-
 # How to use calculator:
 1. Run `python calculate.py`
 2. Enter the figure name. Available are Circle, Square.
@@ -109,7 +108,8 @@
   > >8
 
 #History
-Mon Oct 21 00:09:02 2024 +0300|91bf5a4|Alexandra Smirnova <smirnovaad13@gmail.com>|Documentation to calculate.py added
+Mon Oct 21 03:25:52 2024 +030|91bf5a4|Alexandra Smirnova <smirnovaad13@gmail.com>|Documentation to calculate.py added
+Mon Oct 21 03:04:27 2024 +0300|1dda060|Alexandra Smirnova <smirnovaad13@gmail.com>|All documentation added
 Sun Oct 20 23:43:53 2024 +0300|7672585|Alexandra Smirnova <smirnovaad13@gmail.com>|Documentation to triangle.py added
 Sat Oct 19 21:10:02 2024 +0300|c68e4d8|Alexandra Smirnova <smirnovaad13@gmail.com>|Documentation to square.py added
 Sat Oct 19 21:05:12 2024 +0300|7e78ccf|Alexandra Smirnova <smirnovaad13@gmail.com>|Documentation to circle.py added
