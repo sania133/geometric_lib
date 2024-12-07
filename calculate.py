@@ -17,32 +17,25 @@ sizes = {
 }
 
 def calc(fig, func, size):
-    """
-    Функция для вычисления периметра или площади заданной фигуры.
-
-    :param fig: Название фигуры (circle, square, triangle)
-    :param func: Функция для вычисления ('perimeter' или 'area')
-    :param size: Список значений для вычислений (например, радиус для круга, стороны для квадрата или треугольника)
-    :return: Результат вычисления
-    """
+    
     assert fig in figs, f"Figure {fig} is not valid."
     assert func in funcs, f"Function {func} is not valid."
 
     if fig == 'circle':
         if func == 'perimeter':
-            return circle.calculate_perimeter(*size)
+            return circle.perimeter(*size)
         elif func == 'area':
-            return circle.calculate_area(*size)
+            return circle.area(*size)
     elif fig == 'square':
         if func == 'perimeter':
-            return square.calculate_perimeter(*size)
+            return square.perimeter(*size)
         elif func == 'area':
-            return square.calculate_area(*size)
+            return square.area(*size)
     elif fig == 'triangle':
         if func == 'perimeter':
-            return triangle.calculate_perimeter(*size)
+            return triangle.perimeter(*size)
         elif func == 'area':
-            return triangle.calculate_area(*size)
+            return triangle.area(*size)
     else:
         raise ValueError(f"Unknown figure {fig}")
 
