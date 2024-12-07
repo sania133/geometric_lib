@@ -16,8 +16,19 @@ sizes = {
     "area-triangle": 3
 }
 
+
 def calc(fig, func, size):
-    
+    """
+    Вычисляет периметр или площадь фигуры.
+
+    Параметры:
+        fig (str): Название фигуры (например, 'circle').
+        func (str): Название функции (например, 'perimeter' или 'area').
+        size (list): Список параметров для фигуры.
+
+    Возвращает:
+        float: Результат вычисления (периметр или площадь).
+    """
     assert fig in figs, f"Figure {fig} is not valid."
     assert func in funcs, f"Function {func} is not valid."
 
@@ -39,6 +50,7 @@ def calc(fig, func, size):
     else:
         raise ValueError(f"Unknown figure {fig}")
 
+
 if __name__ == "__main__":
     func = ''
     fig = ''
@@ -55,7 +67,8 @@ if __name__ == "__main__":
     # Ввод параметров фигуры
     expected_size = sizes.get(f"{func}-{fig}", 1)
     while len(size) != expected_size:
-        size = list(map(int, input(f"Input {expected_size} sizes for {fig}, separated by space:\n").split()))
+        size = list(map(int, input(
+            f"Input {expected_size} sizes for {fig}, separated by space:\n").split()))
 
     # Вычисление и возврат результата
     result = calc(fig, func, size)
