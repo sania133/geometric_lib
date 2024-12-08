@@ -1,6 +1,7 @@
 import unittest
 import square
 
+
 class TestSquare(unittest.TestCase):
     def test_square_area_positive(self):
         side = 4
@@ -26,3 +27,7 @@ class TestSquare(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             square.perimeter(side)
+
+
+if __name__ == '__main__':
+    unittest.main()
