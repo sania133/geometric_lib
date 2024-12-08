@@ -6,7 +6,7 @@ class TestTriangle(unittest.TestCase):
         sides = (3, 4, 5)
         expected_area = 6
 
-        result = triangle.calculate_area(*sides)
+        result = triangle.area(*sides)
 
         self.assertAlmostEqual(result, expected_area, places=2)
 
@@ -14,7 +14,7 @@ class TestTriangle(unittest.TestCase):
         sides = (3, 4, 5)
         expected_perimeter = 12
 
-        result = triangle.calculate_perimeter(*sides)
+        result = triangle.perimeter(*sides)
 
         self.assertEqual(result, expected_perimeter)
 
@@ -22,7 +22,7 @@ class TestTriangle(unittest.TestCase):
         sides = (1, 2, 10)
 
         with self.assertRaises(ValueError):
-            triangle.calculate_area(*sides)
+            triangle.area(*sides)
 
         with self.assertRaises(ValueError):
-            triangle.calculate_perimeter(*sides)
+            triangle.perimeter(*sides)
