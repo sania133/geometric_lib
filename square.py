@@ -9,7 +9,7 @@ def area(a):
         float: Площадь квадрата.
     """
     if a < 0:
-        raise AssertionError("Отрицательная сторона")
+        raise AssertionError(ValueError)
     return a * a
 
 
@@ -24,5 +24,5 @@ def perimeter(a):
         float: Периметр квадрата.
     """
     if a < 0:
-        raise AssertionError("Отрицательная сторона")
+        raise AssertionError(ValueError)
     return 4 * a
