@@ -1,71 +1,29 @@
 import circle
 import square
-import triangle
+'''Импортируем модули circle и square, которые содержат функции для вычисления площади и периметра соответствующих фигур'''
 
-# Создаем список доступных фигур
-figs = ['circle', 'square', 'triangle']
-# Создаем список доступных функций
+figs = ['circle', 'square']
+'''Создает список доступных фигур'''
 funcs = ['perimeter', 'area']
-# Словарь размеров для каждой фигуры и функции
-sizes = {
-    "perimeter-circle": 1,
-    "area-circle": 1,
-    "perimeter-square": 1,
-    "area-square": 1,
-    "perimeter-triangle": 3,
-    "area-triangle": 3
-}
-
+'''Создает список доступных функций'''
+sizes = {}
+'''Создает словарь sizes, который будет использоваться для хранения информации о размерах фигур'''
 def calc(fig, func, size):
-    """
-    Функция для вычисления периметра или площади заданной фигуры.
-
-    :param fig: Название фигуры (circle, square, triangle)
-    :param func: Функция для вычисления ('perimeter' или 'area')
-    :param size: Список значений для вычислений (например, радиус для круга, стороны для квадрата или треугольника)
-    :return: Результат вычисления
-    """
-    assert fig in figs, f"Figure {fig} is not valid."
-    assert func in funcs, f"Function {func} is not valid."
-
-    if fig == 'circle':
-        if func == 'perimeter':
-            return circle.calculate_perimeter(*size)
-        elif func == 'area':
-            return circle.calculate_area(*size)
-    elif fig == 'square':
-        if func == 'perimeter':
-            return square.calculate_perimeter(*size)
-        elif func == 'area':
-            return square.calculate_area(*size)
-    elif fig == 'triangle':
-        if func == 'perimeter':
-            return triangle.calculate_perimeter(*size)
-        elif func == 'area':
-            return triangle.calculate_area(*size)
-    else:
-        raise ValueError(f"Unknown figure {fig}")
-
+'''Задаем функцию calc, которая принимает параметры fig - название фигуры, func - название функции, size - список значений, необходимых для вычислений, и печатает результат выполнения функции func из модуля fig'''
+    assert fig in figs
+    assert func in funcs
+    result = eval(f'{fig}.{func}(*{size})')
+    print(f'{func} of {fig} is {result}')
 if __name__ == "__main__":
+'''Этот блок кода выполняется только тогда, когда файл запущен как основная программа'''
     func = ''
     fig = ''
     size = list()
-
-    # Ввод фигуры
     while fig not in figs:
-        fig = input(f"Enter figure name, available are {figs}:\n")
-
-    # Ввод функции
+       fig = input(f"Enter figure name, avaliable are {figs}:\n")
     while func not in funcs:
-        func = input(f"Enter function name, available are {funcs}:\n")
-
-    # Ввод параметров фигуры
-    expected_size = sizes.get(f"{func}-{fig}", 1)
-    while len(size) != expected_size:
-        size = list(map(int, input(f"Input {expected_size} sizes for {fig}, separated by space:\n").split()))
-
-    # Вычисление и возврат результата
-    result = calc(fig, func, size)
-    print(f"The result of {func} of {fig} is {result:.2f}")
-
-
+       func = input(f"Enter function name, avaliable are {funcs}:\n")
+    while len(size) != sizes.get(f"{func}-{fig}", 1):
+       size = list(map(int, input("Input figure sizes separated by space, 1 for circle and square\n").split(' ')))
+'''Циклы работают, если пользователь ввел некорректное название функции или фигуры или недостаточное количество аргументов'''
+    calc(fig, func, size)
