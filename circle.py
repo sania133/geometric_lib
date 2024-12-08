@@ -13,7 +13,7 @@ def area(r):
         float: Площадь круга.
     """
     if r < 0:
-        raise AssertionError("Отрицательный радиус")
+        raise AssertionError(ValueError)
     return math.pi * r * r
 
 
@@ -28,5 +28,5 @@ def perimeter(r):
         float: Периметр круга.
     """
     if r < 0:
-        raise AssertionError("Отрицательный радиус")
+        raise AssertionError(ValueError)
     return 2 * math.pi * r
