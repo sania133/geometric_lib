@@ -1,32 +1,11 @@
 import math
 
-# Импортируем библиотеку math
-
-def area(r):
-    """
-    Вычисляет площадь круга.
-
-    Параметры:
-        r (float): Радиус круга.
-
-    Возвращает:
-        float: Площадь круга.
-    """
-    if r < 0:
+def area(radius):
+    if radius < 0:
         raise ValueError("Радиус не может быть отрицательным")
-    return math.pi * r * r
+    return math.pi * (radius ** 2)
 
-
-def perimeter(r):
-    """
-    Вычисляет периметр (длину окружности) круга.
-
-    Параметры:
-        r (float): Радиус круга.
-
-    Возвращает:
-        float: Периметр круга.
-    """
-    if r < 0:
+def perimeter(radius):
+    if radius < 0:
         raise ValueError("Радиус не может быть отрицательным")
-    return 2 * math.pi * r
+    return 2 * math.pi * radius
