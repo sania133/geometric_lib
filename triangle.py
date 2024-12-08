@@ -1,13 +1,9 @@
-import math
-
 def area(a, b, c):
-    assert a > 0 and b > 0 and c > 0, ValueError
-    assert a + b > c and a + c > b and b + c > a, ValueError
+    if a < 0 or b < 0 or c < 0:
+        raise ValueError("Стороны не могут быть отрицательными")
+    if a + b <= c or a + c <= b or b + c <= a:
+        raise ValueError("Стороны не могут образовать треугольник")
     
+    # Используем формулу Герона для вычисления площади
     s = (a + b + c) / 2
-    return math.sqrt(s * (s - a) * (s - b) * (s - c))
-
-def perimeter(a, b, c):
-    assert a > 0 and b > 0 and c > 0, ValueError
-    return a + b + c
-
+    return (s * (s - a) * (s - b) * (s - c)) ** 0.5
