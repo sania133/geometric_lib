@@ -1,8 +1,13 @@
 import math
-'''импортирует библиотеку math'''
-def area(r):
-'''Создаем функцию для вычисления площади круга, которая принимает аргумент r - радиус круга и возвращает его площадь'''
-    return math.pi * r * r
-def perimeter(r):
-'''Создаем функцию для вычисления периметра круга, которая принимает аргумент r - радиус круга и возвращает его периметр'''
-    return 2 * math.pi * r
+
+
+def area(radius):
+    if radius < 0:
+        raise ValueError("Радиус не может быть отрицательным")
+    return math.pi * (radius ** 2)
+
+
+def perimeter(radius):
+    if radius < 0:
+        raise ValueError("Радиус не может быть отрицательным")
+    return 2 * math.pi * radius
