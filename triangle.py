@@ -13,6 +13,8 @@ def area(a, b, c):
     Возвращает:
         float: Площадь треугольника.
     """
+    if a < 0 or b < 0 or c < 0:
+        raise AssertionError("Отрицательная сторона")
     s = (a + b + c) / 2
     return math.sqrt(s * (s - a) * (s - b) * (s - c))
 
@@ -29,4 +31,6 @@ def perimeter(a, b, c):
     Возвращает:
         float: Периметр треугольника.
     """
+     if a < 0 or b < 0 or c < 0:
+        raise AssertionError("Отрицательная сторона")
     return a + b + c
