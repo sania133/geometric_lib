@@ -47,11 +47,9 @@ def calc(fig, func, size):
             return triangle.perimeter(*size)
         elif func == 'area':
             return triangle.area(*size)
-    else:
-        raise ValueError(f"Unknown figure {fig}")
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # Исправлено здесь
     func = ''
     fig = ''
     size = list()
@@ -67,9 +65,18 @@ if __name__ == "__main__":
     # Ввод параметров фигуры
     expected_size = sizes.get(f"{func}-{fig}", 1)
     while len(size) != expected_size:
-        size = list(map(int, input(
-            f"Input {expected_size} sizes for {fig}, separated by space:\n").split()))
+        try:
+            size = list(map(float, input(
+                f"Input {expected_size} sizes for {fig}, separated by space:\n").split()))
+            if len(size) != expected_size:
+                print(f"Please enter exactly {expected_size} values.")
+        except ValueError:
+            print("Invalid input. Please enter numbers only.")
 
     # Вычисление и возврат результата
-    result = calc(fig, func, size)
-    print(f"The result of {func} of {fig} is {result:.2f}")
+    try:
+        result = calc(fig, func, size)
+        print(f"The result of {func} of {fig} is {result:.2f}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
