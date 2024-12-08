@@ -1,6 +1,7 @@
 import unittest
 import triangle
 
+
 class TestTriangle(unittest.TestCase):
     def test_triangle_area_positive(self):
         sides = (3, 4, 5)
@@ -26,3 +27,7 @@ class TestTriangle(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             triangle.perimeter(*sides)
+
+
+if __name__ == '__main__':
+    unittest.main()
