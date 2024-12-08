@@ -1,82 +1,49 @@
-import circle
-import square
-import triangle
+import math
 
-# Создаем список доступных фигур
-figs = ['circle', 'square', 'triangle']
-# Создаем список доступных функций
-funcs = ['perimeter', 'area']
-# Словарь размеров для каждой фигуры и функции
-sizes = {
-    "perimeter-circle": 1,
-    "area-circle": 1,
-    "perimeter-square": 1,
-    "area-square": 1,
-    "perimeter-triangle": 3,
-    "area-triangle": 3
-}
+def calc(shape, operation, dimensions):
+    # Проверка на количество параметров для каждой фигуры
+    if shape == 'circle':
+        assert len(dimensions) == 1, "Circle requires 1 parameter (radius)"
+        radius = dimensions[0]
+        if radius < 0:
+            raise ValueError("Radius cannot be negative")
+        if operation == 'area':
+            return math.pi * (radius ** 2)
+        elif operation == 'perimeter':
+            return 2 * math.pi * radius
+        else:
+            raise ValueError("Invalid operation for circle")
 
+    elif shape == 'square':
+        assert len(dimensions) == 1, "Square requires 1 parameter (side length)"
+        side = dimensions[0]
+        if side < 0:
+            raise ValueError("Side length cannot be negative")
+        if operation == 'area':
+            return side ** 2
+        elif operation == 'perimeter':
+            return 4 * side
+        else:
+            raise ValueError("Invalid operation for square")
 
-def calc(fig, func, size):
-    """
-    Вычисляет периметр или площадь фигуры.
+    elif shape == 'triangle':
+        assert len(dimensions) == 3, "Triangle requires 3 parameters (side lengths)"
+        a, b, c = dimensions
+        if a < 0 or b < 0 or c < 0:
+            raise ValueError("Side lengths cannot be negative")
+        # Проверка на существование треугольника
+        if a + b <= c or a + c <= b or b + c <= a:
+            raise ValueError("Invalid triangle sides")
+        # Площадь по формуле Герона
+        s = (a + b + c) / 2
+        area = math.sqrt(s * (s - a) * (s - b) * (s - c))
+        if operation == 'area':
+            return area
+        elif operation == 'perimeter':
+            return a + b + c
+        else:
+            raise ValueError("Invalid operation for triangle")
 
-    Параметры:
-        fig (str): Название фигуры (например, 'circle').
-        func (str): Название функции (например, 'perimeter' или 'area').
-        size (list): Список параметров для фигуры.
-
-    Возвращает:
-        float: Результат вычисления (периметр или площадь).
-    """
-    assert fig in figs, f"Figure {fig} is not valid."
-    assert func in funcs, f"Function {func} is not valid."
-
-    if fig == 'circle':
-        if func == 'perimeter':
-            return circle.perimeter(*size)
-        elif func == 'area':
-            return circle.area(*size)
-    elif fig == 'square':
-        if func == 'perimeter':
-            return square.perimeter(*size)
-        elif func == 'area':
-            return square.area(*size)
-    elif fig == 'triangle':
-        if func == 'perimeter':
-            return triangle.perimeter(*size)
-        elif func == 'area':
-            return triangle.area(*size)
-
-
-if __name__ == "__main__":  # Исправлено здесь
-    func = ''
-    fig = ''
-    size = list()
-
-    # Ввод фигуры
-    while fig not in figs:
-        fig = input(f"Enter figure name, available are {figs}:\n")
-
-    # Ввод функции
-    while func not in funcs:
-        func = input(f"Enter function name, available are {funcs}:\n")
-
-    # Ввод параметров фигуры
-    expected_size = sizes.get(f"{func}-{fig}", 1)
-    while len(size) != expected_size:
-        try:
-            size = list(map(float, input(
-                f"Input {expected_size} sizes for {fig}, separated by space:\n").split()))
-            if len(size) != expected_size:
-                print(f"Please enter exactly {expected_size} values.")
-        except ValueError:
-            print("Invalid input. Please enter numbers only.")
-
-    # Вычисление и возврат результата
-    try:
-        result = calc(fig, func, size)
-        print(f"The result of {func} of {fig} is {result:.2f}")
-    except Exception as e:
-        print(f"An error occurred: {e}")
+    else:
+        raise AssertionError("Invalid shape")
 
