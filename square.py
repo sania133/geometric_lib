@@ -1,8 +1,10 @@
-def area(a):
-'''Принимает переменную а - сторону квадрата, возвращает площадь квадрата'''
-    return a * a
+def area(side):
+    if side < 0:
+        raise ValueError("Сторона не может быть отрицательной")
+    return side ** 2
 
-def perimeter(a):
-'''Принимает переменную а - сторну квадрата, возвращает площадь квадрата'''
-    return 4 * a
 
+def perimeter(side):
+    if side < 0:
+        raise ValueError("Сторона не может быть отрицательной")
+    return 4 * side
