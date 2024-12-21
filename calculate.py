@@ -28,7 +28,6 @@ def calc(fig, func, size):
 
     if fig == "triangle":
         a, b, c = size
-        assert a + b > c and a + c > b and b + c > a, "Invalid triangle sides"
 
     result = eval(f'{fig}.{func}(*{size})')
     return result
